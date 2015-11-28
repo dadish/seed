@@ -6,6 +6,14 @@ The seed repo that helps me get started with projects.
 This repo contains the predefined build system and a simple Node.js, "Hello World"
 app to start testing the project as soon as possible.
 
+### Requirements
+You need to have `gulp` and `browserify` installed globally.
+You can install them via [npm][npm].
+```bash
+$ npm install -g gulp
+$ npm install -g browserify
+```
+
 ### Installation
 ```bash
 $ git clone https://github.com/dadish/seed
@@ -37,3 +45,5 @@ $ gulp build
 ```
 
 Packs everything up for production.
+
+[npm]: https:github.com/npm/npm
