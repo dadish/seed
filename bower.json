@@ -1,0 +1,25 @@
+{
+  "name": "dadish-seed",
+  "description": "A seed project that helps me get started quickly.",
+  "main": "index.js",
+  "authors": [
+    "dadish"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "seed",
+    "starter"
+  ],
+  "homepage": "https://github.com/dadish/seed",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
