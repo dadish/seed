@@ -5,7 +5,6 @@ var config                      = require('./config');
 var fs                          = require('fs');
 var through                     = require('through');
 var util                        = require('gulp-util');
-var plumber                     = require('gulp-plumber');
 var vinyl                       = require('vinyl');
 var glob                        = require('glob');
 var _                           = require('lodash');
