@@ -1,0 +1,65 @@
+.branch-details{
+  position: relative;
+  overflow: hidden;
+  @include span(83.71 of 100);
+  @include first;
+  padding : 1rem 2rem;
+  display: none;
+}
+
+.details-seperator{
+  text-align: center;
+  width: 5%;
+  float: left;
+  padding-top: 1.5rem;
+  @include span(1 of 20);
+}
+
+.BuildDetails{
+  @include span(2.5 of 10);
+}
+
+.UnitTestsDetails{
+  @include span(3.5 of 10);
+  &.has-chart{
+    @include span(3.2 of 10);
+  }
+}
+
+.FunctionalTestsDetails{
+  @include span(3 of 10);
+  @include last;
+  &.has-chart{
+    @include span(31.25 of 100);
+    @include last;
+  }
+}
+
+.detail-title--w{
+  @include span(1 of 1);
+  &.split{
+    @include span(4 of 10);
+  }
+}
+
+.detail-content--w{
+  @include span(1 of 1);
+  &.split{
+    @include span(5 of 10);
+    @include last;
+  }
+}
+
+@include breakpoint (900px 0px) {
+  .branch-details{
+    @include span(1 of 1);
+  }
+}
+
+@include breakpoint (760px 0px) {
+  .details-seperator{
+    @include span (1 of 1);
+    text-align: center;
+    padding-bottom : 1.5rem;
+  }
+}

@@ -1,0 +1,117 @@
+.Changelist{
+  @include span(14.8 of 100);
+  padding: 1rem 1rem 1rem 4.5rem;
+}
+
+.Owner{
+  padding: 1rem;
+  @include span(10.7 of 100);
+}
+
+.TimeStarted{
+  padding: 1rem;
+  @include span(19.5 of 100);
+}
+
+.RunnerWrap{
+  @include span(32.9 of 100);
+  @include post(4.7 of 100);
+}
+
+.Status,
+.StatusAlt{
+  padding: 1rem 1rem 1rem 4.2rem;
+  @include span(16.29 of 100);
+  @include last;
+}
+
+//=================================
+//            1200PX
+//=================================
+@include breakpoint(1200px 0px) {
+  .Changelist{
+    @include span(13 of 100);
+    padding: 1rem 1rem 1rem 2.5rem;
+  }
+
+  .Owner{
+    padding: 1rem;
+    @include span(10.7 of 100);
+  }
+
+  .TimeStarted{
+    padding: 1rem;
+    @include span(16.5 of 100);
+  }
+
+  .RunnerWrap{
+    @include span(38 of 100);
+    @include post(1.6 of 100);
+  }
+
+  .Status,
+  .StatusAlt{
+    padding: 1rem 1rem 1rem 2.2rem;
+    @include span(16.29 of 100);
+    @include last;
+  }
+}
+
+//=================================
+//            900PX
+//=================================
+@include breakpoint(900px 0px) {
+
+  .branch-i{
+    margin-bottom : 1.5rem;
+  }
+
+  .Changelist{
+    @include span(1 of 4);
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .Owner{
+    @include span(1 of 4);
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .TimeStarted{
+    @include span(1 of 4);
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .RunnerWrap{
+    @include span(1 of 1);
+  }
+
+  .Status,
+  .StatusAlt{
+    @include span(1 of 4);
+    padding: 2rem 1rem 1rem 1rem;
+    @include last;
+  }
+}
+
+@include breakpoint(760px 0px) {
+  .Changelist{
+    @include span(1 of 2);
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .Owner{
+    @include span(1 of 2);
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .TimeStarted{
+    @include span(1 of 2);
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .Status{
+    @include span(1 of 2);
+    //@include last;
+  }
+
+}

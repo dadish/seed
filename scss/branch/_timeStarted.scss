@@ -1,0 +1,39 @@
+.TimeStarted{
+  letter-spacing: 0.3px;
+  .date{
+    margin-right : 1rem;
+  }
+}
+
+@include breakpoint(1200px 0px) {
+  .TimeStarted{
+    .date,
+    .time{
+      line-height: 1.45rem;
+      display: block;
+    }
+  }
+}
+
+@include breakpoint (900px 0px) {
+  .TimeStarted{
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    label{
+      display: block;
+      font-size: 1.25rem;
+      color : $gray;
+    }
+
+    .date{
+      display: block;
+      margin-right : 0rem;
+    }
+    .time{
+      display: block;
+      line-height: 1.5rem;
+      font-size: 1rem;
+    }
+  }
+}

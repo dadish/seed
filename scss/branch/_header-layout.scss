@@ -1,0 +1,54 @@
+.Build-head{
+  padding : 0rem 1rem;
+  @include span(14 of 100);
+}
+
+.UnitTest-head{
+  padding : 0rem 1rem;
+  @include span(12.9 of 100);
+}
+
+.FunctionalTest-head{
+  padding : 0rem 1rem;
+  @include span(15.5 of 100);
+}
+
+.Status-head{
+  padding: 0rem 1rem;
+  @include span(10 of 100);
+  margin-left: 0rem;
+}
+
+@include breakpoint(1200px 0px) {
+
+  .Changelist-head{
+    padding: 0rem 1rem 0rem 2.5rem;
+  }
+
+  .TimeStarted-head{
+    @include span(16.5 of 100);
+  }
+
+  .Build-head{
+    padding : 0rem 1rem;
+    @include span(15.7 of 100);
+  }
+
+  .UnitTest-head{
+    padding : 0rem 1rem;
+    @include span(12.9 of 100);
+  }
+
+  .FunctionalTest-head{
+    padding : 0rem 1rem;
+    @include span(15.5 of 100);
+  }
+
+  .Status-head{
+    padding: 0rem 1rem;
+    @include span(14.5 of 100);
+    margin-left: 0rem;
+    @include last;
+  }
+
+}

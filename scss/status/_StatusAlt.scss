@@ -1,0 +1,54 @@
+.StatusAlt{
+  opacity: 0;
+  position : absolute;
+  background-color: $ci-bg + #070707;
+  right : 0rem;
+  top : 0rem;
+  bottom : 0rem;
+  padding : 4rem 3rem 3rem 3rem;
+  font-size: 1.75rem;
+  line-height: 1rem;
+  text-align: center;
+  letter-spacing: 1px;
+  border-left : 1px solid $silver;
+  @include transition(200, opacity);
+
+  .icon-stack{
+    font-size: 1rem;
+    line-height: 2rem;
+    height: 31px;
+    width: 23px;
+  }
+
+  .icon-single{
+    font-size: 1.45rem;
+    height: 25px;
+    width: 15px;
+  }
+}
+
+.branch-i{
+  &.details-open{
+    .StatusAlt{
+      opacity: 1;
+    }
+  }
+}
+
+@include breakpoint(1200px 0px) {
+  .StatusAlt{
+    line-height: 2rem;
+    padding : 4rem 2.5rem 3rem 2rem;
+    text-align: center;
+    .icon-single{
+      width : 30px;
+    }
+  }
+}
+
+@include breakpoint (900px 0px) {
+  .StatusAlt{
+    display: none;
+    z-index : $index--2;
+  }
+}

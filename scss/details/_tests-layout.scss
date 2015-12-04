@@ -1,0 +1,203 @@
+.UnitTestsDetails{
+  .detail-title--w{
+    padding-left : 2rem;
+  }
+  .detail-content--w{
+    padding-left : 1.5rem;
+    &.split{
+      @include span(6 of 10);
+    }
+  }
+
+  .test-chart--w{
+    @include span(1 of 2);
+  }
+
+  &.status-pending,
+  &.status-running,
+  &.status-cantRun{
+    @include span(28 of 100);
+    padding-left : 4rem;
+    padding-top : 0.5rem;
+    min-height : 71.5px;
+    .detail-title--w{
+      padding-left : 1.5rem;
+    }
+  }
+
+  &.status-cantRun{
+    padding-left: 2rem;
+  }
+}
+
+.FunctionalTestsDetails{
+  &.has-chart{
+    .detail-title--w{
+      @include span(45 of 100);
+    }
+    .detail-content--w{
+      @include span(52.5 of 100);
+      float: right;
+    }
+    .test-details{
+      padding-left : 0.35rem;
+    }
+  }
+
+  &.status-pending,
+  &.status-running,
+  &.status-cantRun{
+    padding-top : 0.5rem;
+    padding-left : 4rem;
+    min-height : 71.5px;
+  }
+
+  &.status-cantRun{
+    padding-left: 2rem;
+  }
+}
+
+@include breakpoint(1200px 0px) {
+  .UnitTestsDetails,
+  .FunctionalTestsDetails{
+    &.status-running,
+    &.status-pending,
+    &.status-cantRun{
+      padding-left : 2rem;
+    }
+  }
+
+  .UnitTestsDetails{
+    &.status-cantRun{
+      @include span(31 of 100);
+      padding-left : 0rem;
+    }
+  }
+
+  .UnitTestsDetails,
+  .FunctionalTestsDetails{
+    &.status-passed,
+    &.status-failed{
+      padding-left : 1.5rem;
+      .detail-title--w,
+      .detail-content--w{
+        @include span(1 of 1);
+      }
+
+      .detail-title--w{
+        .detail-title{
+          @include span(1 of 2);
+          line-height: 1.5rem;
+        }
+        .test-coverage{
+          @include span(2 of 5);
+          font-size: 1.25rem;
+          line-height: 1.5rem;
+        }
+      }
+
+      .detail-content--w{
+        margin-top : 0.25rem;
+
+        .test-chart--w{
+          @include span(47 of 100);
+        }
+
+        .test-details{
+          @include span(35 of 100);
+          margin-top : 0.5rem;
+        }
+      }
+    }
+  }
+
+  .FunctionalTestsDetails{
+    &.status-passed,
+    &.status-failed{
+      .detail-title--w{
+        .detail-title{
+          @include span(66 of 100);
+        }
+        .test-coverage{
+          @include span(3 of 10);
+        }
+      }
+      .detail-content--w{
+        padding-left : 1rem;
+        .test-chart--w{
+          @include span(44 of 100);
+        }
+      }
+    }
+  }
+
+}
+
+
+@include breakpoint(900px 0px) {
+  .UnitTestsDetails{
+    &.status-cantRun{
+      padding-left : 0.5rem;
+    }
+  }
+
+  .FunctionalTestsDetails{
+    &.status-cantRun{
+      padding-left : 1rem;
+    }
+  }
+}
+
+@include breakpoint(760px 0px) {
+  .UnitTestsDetails,
+  .FunctionalTestsDetails{
+    &.status-failed,
+    &.status-passed,
+    &.status-running,
+    &.status-pending,
+    &.status-cantRun{
+      @include span(1 of 1);  
+      padding-left : 0rem;
+      .detail-title--w{
+        text-align: center;
+        padding-left : 0rem;
+        .detail-title,
+        .test-coverage{
+          display: inline-block;
+          width : auto;
+          float : none;
+        }
+        .test-coverage{
+          padding-left : 1rem;
+        }
+      }
+
+      .detail-content--w{
+        .detail-status{
+          text-align : center;
+        }
+
+        .test-chart--w,
+        .test-details{
+          text-align: center;
+          @include span(1 of 1);
+        }
+        .test-details{
+          .test-passed-count,
+          .test-failed-count,
+          .test-pending-count,
+          .test-time-count{
+            display: inline-block;
+            width : auto;
+            margin : 0rem 1rem;
+          }
+        }
+        .test-chart{
+          width : 160px;
+          height : 160px;
+        }
+      }
+
+    }
+  }
+}

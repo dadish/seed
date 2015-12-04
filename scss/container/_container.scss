@@ -1,0 +1,22 @@
+html, body{
+  background-color : $ci-bg;
+  font-size: 13px;
+}
+
+.container{
+  @include container;
+  @include border-box-sizing;
+}
+
+@include breakpoint(1200px 0px) {
+  .container{
+    max-width: 900px;
+  }
+}
+
+@include breakpoint (900px 0px) {
+  .container{
+    padding : 0rem 1rem;
+    max-width: 720px;
+  }
+}

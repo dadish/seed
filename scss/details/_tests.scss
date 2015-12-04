@@ -1,0 +1,80 @@
+.test-coverage{
+  font-size: 2rem;
+  margin: 0rem;
+}
+
+.test-chart--w{
+  @include span(49 of 100);
+  height : 80px;
+}
+
+.test-chart{
+  overflow:hidden;
+  display:inline-block;
+  width:80px;
+  height:80px;
+  padding:0.5em;
+}
+
+.test-details{
+  @include span(41 of 100);
+  @include last;
+  p{
+    margin: 0rem;
+    line-height : 1.75rem;
+  }
+
+  p.test-time-count{
+    margin-left : -0.25rem;
+  }
+}
+
+.test-details{
+  .icon-test-counter{
+    font-size: 0.7rem;
+  }  
+}
+
+@include breakpoint(760px 0px) {
+  .UnitTestsDetails,
+  .FunctionalTestsDetails{
+    &.status-failed,
+    &.status-passed,
+    &.status-running,
+    &.status-pending,
+    &.status-cantRun{
+      
+      .detail-title--w{
+        .detail-title,
+        .test-coverage{
+          font-size: 2rem;
+          line-height: 3rem;
+        }
+        .test-coverage{
+          font-size: 2.5rem;
+        }
+      }
+
+      .detail-content--w{
+        .test-chart--w{
+          height: auto;
+        }
+        .test-details{
+          .test-passed-count,
+          .test-failed-count,
+          .test-pending-count,
+          .test-time-count{
+            font-size: 1.5rem;
+            line-height: 2rem;
+
+            .icon{
+              font-size: 1.5rem;
+              line-height: 2rem;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

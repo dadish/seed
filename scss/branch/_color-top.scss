@@ -1,0 +1,50 @@
+.color-top{
+  height : 3px;
+  position: absolute;
+  top : 0%;
+  left : 0%;
+  right : 16.29%;
+  opacity : 0;
+  @include transition(200);
+  z-index: $index-3;  
+}
+
+.branch-i{
+  &.details-open{
+    .color-top{
+      opacity: 1;
+    }
+  }
+
+  &.status-passed{
+    .color-top{
+      background-color : $ci-green;
+    }
+  }
+
+  &.status-pending{
+    .color-top{
+      background-color : $ci-orange;
+    }
+  }
+
+  &.status-running{
+    .color-top{
+      background-color : $ci-blue;
+    }
+  }
+
+  &.status-failed{
+    .color-top{
+      background-color : $ci-red;
+    }
+  }
+}
+
+@include breakpoint (900px 0px) {
+  .color-top{
+    opacity: 1;
+    right : 0%;
+    height : 8px;
+  }
+}

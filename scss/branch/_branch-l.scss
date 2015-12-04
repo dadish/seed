@@ -1,0 +1,6 @@
+.branch-l{
+  @include no-list;
+  @include span(1 of 1);
+  border : 2px solid $silver + #111;
+  margin-bottom: 4rem;
+}
