@@ -15,6 +15,10 @@ describe('gulp create-css-dev', function () {
     exec = promisify(exec);
     stat = promisify(fs.stat);
 
+    // ============================================
+    // Prepare environment for the test
+    // ============================================
+
     // First make sure that the filepath does not exist
     // so we try to remove it
     exec('gulp remove-css-dev') // create the file
@@ -36,6 +40,10 @@ describe('gulp create-css-dev', function () {
       if (!stats.isFile()) return Promise.resolve();
       else throw new Error('There should not be a file on `' + filepath + '` for this test');
     })
+
+    // ============================================
+    // Everything should be ready for the test
+    // ============================================
 
     // Now try to create the file
     .then(function () {
