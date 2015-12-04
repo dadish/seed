@@ -7,11 +7,10 @@ This repo contains the predefined build system and a simple Node.js, "Hello Worl
 app to start testing the project as soon as possible.
 
 ### Requirements
-You need to have `gulp` and `browserify` installed globally.
-You can install them via [npm][npm].
+You need to have `gulp` installed globally.
+You can install it via [npm][npm].
 ```bash
 $ npm install -g gulp
-$ npm install -g browserify
 ```
 
 ### Installation
@@ -26,7 +25,7 @@ $ npm i # install dependencies
 
 ##### Dev mode
 ```bash
-$ gulp dev [port]
+$ gulp dev [--port 3000]
 ```
 
 Will start the server on `localhost:[port]`. Keep watching your `.scss` and `.js` files
