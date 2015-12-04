@@ -1,0 +1,9 @@
+/deps/
+node_modules/
+.gitignore
+bower.json
+gulpfile.js
+gulpTasks/
+package.json
+Readme.md
+*.sublime-project
