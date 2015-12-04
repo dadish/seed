@@ -3,17 +3,29 @@
 var gulp                        = require('gulp');
 var config                      = require('./config');
 var fs                          = require('fs');
-var through                     = require('through2');
+var through                     = require('through');
 var util                        = require('gulp-util');
+var plumber                     = require('gulp-plumber');
+var vinyl                       = require('vinyl');
+var glob                        = require('glob');
+var _                           = require('lodash');
 
+var filepath = config.build_dir + '/' + config.name + '.css';
+var scssGlob = config.scss_dir + '/**/_index.scss';
 var taskName = 'refill-css-dev';
 
-gulp.task(taskName, function (done) {
-  gulp.src(config.scss_dir + '/**/*.scss')
-    .pipe(through.obj(function (file) {
-      util.log(file.path);
-      this.push(file);
-    }))
-    .on('end', done);
+function refillCssDev () {
+  var files = glob.sync(scssGlob);
+  files = _(files).map(function (file) {
+    return file.replace(config.scss_dir + '/', '').replace('/_index.scss', '');
+  })
+  .reduce(function (memo, name) {
+    return memo += '@import url("../css/' + name + '.css");\n';
+  }, '');
 
+  fs.writeFileSync(filepath, files);
+}
+
+gulp.task(taskName, function () {
+  refillCssDev();
 });
