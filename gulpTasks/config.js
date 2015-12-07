@@ -12,33 +12,51 @@ var process                     = require('process');
 module.exports = {
 
   /**
-   * {String} The name of the project. Should be a valid filename.
-   * Used for naming the build files.
+   * @param {String} name The name of the project. Should be a valid filename.
+   *  Used for naming the build files.
    */
   name : 'seed',
 
   /**
-   * {String} The path to the build dir
+   * @param {String} buildDir The path to the build dir
    * 
    */
   buildDir : path.join(process.cwd(), '/build'),
 
   /**
-   * {String} The path to the scss dir
+   * @param {String} buildDirUrl The url of the build directory.
+   *  It is used when composing a url to production css and js files
+   */
+  buildDirUrl : '/build/',
+
+  /**
+   * @param {String} jsDir The path to the js dir
+   * 
+   */
+  jsDir : path.join(process.cwd(), '/js'),
+
+  /**
+   * @param {String} jsDirUrl The url of the js directory.
+   *  It is used when composing a url to dev js files
+   */
+  jsDirUrl : '/js/',
+
+  /**
+   * @param {String} scssDir The path to the scss dir
    * 
    */
   scssDir : path.join(process.cwd(), '/scss'),
 
   /**
-   * {String} The string you want to prepend to your
-   * scss files. Useful when need to import vars, mixins, susy
-   * into every scss file
+   * @param {String} sassPrepend The string you want to prepend to your
+   *  scss files. Useful when need to import vars, mixins, susy
+   *  into every scss file
    *
    */
   sassPrepend : '@import "base";\n',
 
    /**
-    * {Array} The array of globs that resolve to JavaScript files
+    * @param {Array} jsLint The array of globs that resolve to JavaScript files
     *   for linting
     * 
     */
@@ -49,4 +67,23 @@ module.exports = {
     path.join(process.cwd(), '/gulpfile.js'),
   ],
 
+  /**
+   * @param {Array} injectFiles An Array of globs that resolve to files
+   *  that need to pass string injection process when built for production
+   * 
+   */
+  injectFiles : [
+    path.join(process.cwd(), 'public/index.html'),
+  ],
+
+  /**
+   * The tags for pointing out in your index.html or alike files
+   * on where to inject the css and js files
+   * 
+   * @param {Array} jsInjectTags An array of two [startTag, endTag] strings.
+   * @param {Array} cssInjectTags An array of two [startTag, endTag] strings.
+   * 
+   */
+  cssInjectTags : ['<!-- inject-css -->', '<!-- inject-css-end -->'],
+  jsInjectTags : ['<!-- inject-js -->', '<!-- inject-js-end -->'],
 };
