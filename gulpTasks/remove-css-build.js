@@ -9,6 +9,6 @@ var config                      = require('./config');
  */
 gulp.task('remove-css-build', function (done) {
   var filename;
-  filename = config.build_dir + config.name + '.*.css';
+  filename = config.buildDir + config.name + '.*.css';
   del([filename], done);
 });

@@ -5,7 +5,7 @@ var exec                        = require('child_process').exec;
 var fs                          = require('fs');
 var promisify                   = require('es6-promisify');
 
-var filepath = gulpConfig.build_dir + '/' + gulpConfig.name + '.css';
+var filepath = gulpConfig.buildDir + '/' + gulpConfig.name + '.css';
 
 describe('gulp remove-css-dev', function () {
   it('removes a `' + filepath +'` file.', function (done) {

@@ -21,13 +21,13 @@ module.exports = {
    * {String} The path to the build dir
    * 
    */
-  build_dir : path.resolve(process.cwd() + '/build'),
+  buildDir : path.join(process.cwd(), '/build'),
 
   /**
    * {String} The path to the scss dir
    * 
    */
-   scss_dir : path.resolve(process.cwd() + '/scss'),
+  scssDir : path.join(process.cwd(), '/scss'),
 
   /**
    * {String} The string you want to prepend to your
@@ -35,7 +35,18 @@ module.exports = {
    * into every scss file
    *
    */
-   sass_prepend : '@import "base";\n'
+  sassPrepend : '@import "base";\n',
 
+   /**
+    * {Array} The array of globs that resolve to JavaScript files
+    *   for linting
+    * 
+    */
+  jsLint : [
+    path.join(process.cwd(), '/js/**/*.js'),
+    path.join(process.cwd(), '/gulpTasks/**/*.js'),
+    path.join(process.cwd(), '/index.js'),
+    path.join(process.cwd(), '/gulpfile.js'),
+  ],
 
 };

@@ -5,7 +5,7 @@ var exec                        = require('child_process').exec;
 var fs                          = require('fs');
 var promisify                   = require('es6-promisify');
 
-var filepath = gulpConfig.build_dir + '/' + gulpConfig.name + '.css';
+var filepath = gulpConfig.buildDir + '/' + gulpConfig.name + '.css';
 
 describe('gulp create-css-dev', function () {
   it('creates a `' + filepath +'` file.', function (done) {

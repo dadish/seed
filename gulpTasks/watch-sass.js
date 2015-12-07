@@ -16,29 +16,32 @@ var refillCssDev                = require('./refill-css-dev');
 var taskName = 'watch-sass';
 var watchGlob = config.scss_dir + '/**/*.scss';
 
-// sass prepend
-// ============
-// Prepends the string for before 
-// a scss file is comiled by gulp-sass
-// Useful when you need to import vars, mixins, susy...
+/**
+ * Prepend string to each sass file
+ * @param {Vinyl} file The Vinyl sass file that is passed through the stream
+ * @returns {undefined} Returns nothing when used as it is
+ * @queue {Vinyl} Queues the modified Vinyl object
+ */
 function sassPrepend (file) {
+  var str;
   if (file.event === 'unlink') return this.queue(file);
-  var str, path, filename, prepend;
   str = file.contents.toString();
   str = config.sass_prepend + str;
   file.contents = new Buffer(str);
   this.queue(file);
 }
 
-// sass report
-// ===========
-// Reports about the changes made to the destination
-// files
+/**
+ * Report the actions upon the files
+ * @param {Vinyl} file The Vinyl file that is passed through the stream
+ * @returns {undefined} Returns nothing when used as it is
+ * @queue {Vinyl} Queues the Vinyl object down the stream
+ */
 function sassReport (file) {
   var action;
   action = file.event;
 
-  // The unlink event is reported by sassRemove function
+  // The unlink event is reported by cssRemove function
   if (action === 'unlink') return this.queue(file);
   
   if (action === undefined || action === 'change') action = 'modified';
@@ -47,11 +50,15 @@ function sassReport (file) {
   this.queue(file);
 }
 
-// sass remove
-// ===========
-// Remove the file if unlink event is emitted
-function sassRemove (file) {
-  var path, _this;
+/**
+ * Removes the correspoding css file when sass file is deleted
+ * @param {Vinyl} file The Vinyl file that is passed through the stream
+ * @returns {undefined} Returns nothing when used as it is
+ * @queue {Vinyl} Queues the Vinyl object down the stream
+ * @throws {Error} Throws Error if the file could not be removed
+ */
+function cssRemove (file) {
+  var path;
   if (file.event !== 'unlink') return this.queue(file);
   path = file.path.split('.');
   path.pop();
@@ -63,62 +70,61 @@ function sassRemove (file) {
       reporter('Couldn\'t remove the file > ' + path, taskName, 'red');
       util.beep();
       throw new Error(err);
-    } else {
-      reporter('removed > ' + path, taskName, 'green');
-    }
+    } else reporter('removed > ' + path, taskName, 'green');
   });
   
   this.queue(file);
 }
 
-// update dev css
-// ==============
-// Update the dev css when either new file is created
-// or a file is deleted
+/**
+ * Updates the dev css that is in `build` directory
+ * @param {Vinyl} file The Vinyl object that is passed through the stream
+ * @returns {undefined} Returns nothing when used as it is
+ * @queue {Vinyl} Queues the Vinyl object down the stream
+ */
 function updateDevCss (file) {
-  if (file.event === 'change') return this.queue(file);
-
   var devCssPath = config.build_dir + '/' + config.name + '.css';
+  
+  if (file.event === 'change') return this.queue(file);
 
   refillCssDev(function (err) {
     if (err) {
       reporter('Couldn\'t refill the dev css file', taskName, 'red');
       util.beep();
       throw new Error(err);      
-    } else {
-      reporter('refilled > ' + devCssPath, taskName, 'green');
-    }
+    } else reporter('refilled > ' + devCssPath, taskName, 'green');
   });
 
   this.queue(file);
 }
 
-// on error
-// ========
-// Handles unexpected errors
+/**
+ * Reports error when occurs 
+ * @param {string} err  The error message
+ * @returns {undefined} Returns nothing
+ */
 function onError (err) {
   util.log(util.colors.red(err));
   util.beep();
 }
 
 
-// The watch task
-gulp.task(taskName, function (done) {
-  
- gulp.src(watchGlob)
-  .pipe(plumber({errorHandler : onError}))
+gulp.task(taskName, function () {
+  gulp.src(watchGlob)
+  .pipe(plumber({ 
+    errorHandler : onError, 
+  }))
   .pipe(watch(watchGlob))
   .pipe(sassPlotter())
   .pipe(through(sassPrepend))
   .pipe(sass({
-      errLogToConsole : true,
-      sourceComments : true
-    }))
+    errLogToConsole : true,
+    sourceComments : true,
+  }))
   .pipe(gulp.dest('./css'), {
-    cwd : process.cwd()
+    cwd : process.cwd(),
   })
   .pipe(through(updateDevCss))
-  .pipe(through(sassRemove))
+  .pipe(through(cssRemove))
   .pipe(through(sassReport));
-
-})
+});
