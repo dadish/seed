@@ -4,11 +4,11 @@ var gulp                        = require('gulp');
 var nodemon                     = require('gulp-nodemon');
 var argv                        = require('yargs').argv;
 
-gulp.task('dev', function () {
-  var port, defaultPort;
-  defaultPort = 3000;
-  port = argv.port || defaultPort;
+var port, defaultPort;
+defaultPort = 3000;
+port = argv.port || defaultPort;
 
+gulp.task('dev', function () {
   nodemon({
     script : '',
     ext : 'js',
