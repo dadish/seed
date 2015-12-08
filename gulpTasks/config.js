@@ -42,6 +42,13 @@ module.exports = {
   jsDirUrl : '/js/',
 
   /**
+   * @param {String} jsEntryPoint The name of the js file (without extension)
+   *  that is bootstrapped by requirejs and used as a configuration file
+   *  when optimized by rjs
+   */
+  jsEntryPoint : 'Boot',
+
+  /**
    * @param {String} scssDir The path to the scss dir
    * 
    */

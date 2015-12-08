@@ -9,13 +9,13 @@ var reporter                    = require('./reporter');
 var through                     = require('through');
 var _                           = require('lodash');
 
-var taskName = 'inject-css-dev';
-var html = '\n<link href="<%= buildDirUrl + name %>.css" rel="stylesheet" type="text/css"></link>\n';
+var taskName = 'inject-js-dev';
+var html = '\n<script data-main="/js/<%= jsEntryPoint %>" src="/deps/requirejs/require.js"></script>\n';
 var injectStr = _.template(html)(config);
 
-injector = through(injector(config.cssInjectTags[0], config.cssInjectTags[1], injectStr));
+injector = through(injector(config.jsInjectTags[0], config.jsInjectTags[1], injectStr));
 
-gulp.task(taskName, ['create-css-dev'], function (done) {
+gulp.task(taskName, function (done) {
   var destDir;
   gulp.src(config.injectFiles)
     .pipe(injector)
