@@ -19,22 +19,33 @@ $ git clone https://github.com/dadish/seed
 $ cd seed
 $ rm -rf .git && git init && git commit -m "Initial Commit" # optionally reset git history
 $ npm i # install dependencies
+$ bower install # install dependencies
 ```
 
 ### Development
 
 ##### Dev mode
 ```bash
-$ gulp dev [--port 3000]
+$ gulp dev
 ```
 
-Will start the server on `localhost:[port]`. Keep watching your `.scss` and `.js` files
-and warn you if something goes wrong. The `port` is optional and defaults to `3000`.
+Will populate and inject css and js links into designated files(`e.g. index.html`).
 
-##### Testing
+##### Watch Mode
+###### Sass
 ```bash
-$ gulp test
+$ gulp watch-sass
 ```
+
+Will watch your `.scss` files and compile required once when change occurs.
+
+###### JS
+```bash
+$ gulp watch-js
+```
+
+Will watch your `.js` files and report linting problem if occured. 
+Consider changing the `.eslintrc` file to meet your needs.
 
 ### Production
 
@@ -43,6 +54,7 @@ $ gulp test
 $ gulp build
 ```
 
-Packs everything up for production.
+Packs everything up for production. Injects production version of your js and css files into
+designated files(`e.g. index.html`).
 
 [npm]: https:github.com/npm/npm
