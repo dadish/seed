@@ -8,7 +8,7 @@ var promisify                   = require('es6-promisify');
 var _                           = require('lodash');
 
 var filepath = config.buildDir + '/' + config.name + '.css';
-var scssGlob = config.scssDir + '/**/_index.scss';
+var scssGlob = config.scssDir + '/*.scss';
 var taskName = 'refill-css-dev';
 
 var writeFile = promisify(fs.writeFile);
@@ -24,13 +24,22 @@ glob = promisify(glob);
 function refillCssDev (done) {
   var str;
   glob(scssGlob)
-    .then(function (files) {
-      str = _(files).map(function (file) {
-        return file.replace(config.scssDir + '/', '').replace('/_index.scss', '');
+    .then(function (paths) {
+      str = _(paths)
+
+      .map(function (path) {
+        return path.split('/').pop().replace('.scss', '');
       })
+
+      .filter(function (name) {
+        if (name.indexOf('_') === 0) return false;
+        return true;
+      })
+
       .reduce(function (memo, name) {
         return memo + '@import url("../css/' + name + '.css");\n';
       }, '');
+
       return writeFile(filepath, str);
     })
     .then(done);
