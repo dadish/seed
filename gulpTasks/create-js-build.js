@@ -32,10 +32,14 @@ gulp.task(taskName, function (done) {
     res.split('\n').forEach(function (str, index) {
       msg = ' require: ';
       if (index === 0 || index === res.length - 1 || !str.length) return;
-      if (index === 1) msg = ' building: ';
-      if (index === 2) msg = ' start ';
+      else if (index === 1) msg = ' building: ';
+      else if (index === 2) msg = ' start: ';
       reporter(msg + str, taskName, 'cyan');
     });
-    done(); // finish
+    
+    gulp.src(outPath)
+      .pipe(rev())
+      .pipe(gulp.dest(config.buildDir.split('/').pop()))
+      .on('end', done);
   });
 });

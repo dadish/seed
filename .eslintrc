@@ -39,7 +39,7 @@
     /// Best Practices ///
     "accessor-pairs" : 1,
     "block-scoped-var" : 2,
-    "complexity" : [1, 5],
+    "complexity" : [1, 10],
     "consistent-return" : 1,
     "curly": [2, "multi-line"],
     "default-case" : 2,
