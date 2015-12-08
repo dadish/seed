@@ -1,0 +1,49 @@
+<div class="StatusColor"></div>
+<div class="StatusColorGray"></div>
+
+<div class="color-top"></div>
+
+<div class="Changelist"><label class="mb">Change: </label><%= id %></div>
+
+<div class="Owner"><label class="mb">Owner: </label><%= owner %></div>
+
+<div class="TimeStarted">
+  <label class="mb">Time Started: </label> 
+  <span class="date"><%= moment_start_date %></span> 
+  <span class="time"><i class="icon icon-clock"></i> <%= moment_start_time %></span>
+</div>
+
+<div class="Status">
+  
+</div>
+
+<div class="StatusAlt">
+  
+</div>
+
+<div class="RunnerWrap">
+  <div class="RunnerProgress">
+    <div class="runner-stick"></div>
+  </div>
+  
+  <div class="Build">
+    <label class="mb">Build</label>
+    <div class="runner-circle"></div>
+  </div>
+  
+  <div class="UnitTest">
+    <label class="mb">Unit Test</label>
+    <div class="runner-circle"></div>
+  </div>
+  
+  <div class="FunctionalTest">
+    <label class="mb">Functional Test</label>
+    <div class="runner-circle"></div>
+  </div>
+</div>
+
+<label class="mb more"><i class="icon icon-down"></i></label>
+
+<div class="branch-details">
+  <div class="detail-progress"><i class="icon icon-reload icon-spin blue"></i></div>
+</div>
