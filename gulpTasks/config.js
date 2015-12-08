@@ -42,11 +42,17 @@ module.exports = {
   jsDirUrl : '/js/',
 
   /**
-   * @param {String} jsEntryPoint The name of the js file (without extension)
+   * @param {String} jsEntryPoint The relative path of the js file (without extension)
    *  that is bootstrapped by requirejs and used as a configuration file
    *  when optimized by rjs
    */
-  jsEntryPoint : 'Boot',
+  jsEntryPoint : 'js/Boot',
+
+  /**
+   * @param {String} jsAlmond The relative path of the almond (requirejs) (without extension)
+   *  that will be used by requirejs to minify the js assets
+   */
+  jsAlmond : 'deps/almond/almond',
 
   /**
    * @param {String} scssDir The path to the scss dir
@@ -65,10 +71,11 @@ module.exports = {
    /**
     * @param {Array} jsLint The array of globs that resolve to JavaScript files
     *   for linting
-    * 
+    * Uncomment the first line to lint your js files
     */
   jsLint : [
-    path.join(process.cwd(), '/js/**/*.js'),
+
+    // path.join(process.cwd(), '/js/**/*.js'),
     path.join(process.cwd(), '/gulpTasks/**/*.js'),
     path.join(process.cwd(), '/index.js'),
     path.join(process.cwd(), '/gulpfile.js'),
