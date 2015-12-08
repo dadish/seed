@@ -8,7 +8,7 @@ var reporter                    = require('./reporter');
 
 var defaultPort = 3000;
 var port = argv.port || defaultPort;
-var taskName = 'start-server';
+var taskName = 'serve-demo';
 
 gulp.task(taskName, function (done) {
   nodemon({

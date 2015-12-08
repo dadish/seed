@@ -5,4 +5,4 @@ var sequence                    = require('gulp-sequence');
 
 var taskname = 'dev';
 
-gulp.task(taskname, sequence('inject-css-dev', 'inject-js-dev'));
+gulp.task(taskname, sequence('inject-css-build', 'inject-js-build'));
