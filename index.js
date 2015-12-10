@@ -1,7 +1,6 @@
 'use strict';
 
 var express                     = require('express');
-var chalk                       = require('chalk');
 var argv                        = require('yargs').argv;
 var path                        = require('path');
 
@@ -17,5 +16,3 @@ app.use('/js/', express.static(path.join(__dirname, '/js')));
 app.use('/test/', express.static(path.join(__dirname, '/test')));
 
 app.listen(port);
-
-console.log(chalk.green('Serving at 127.0.0.1:' + port));

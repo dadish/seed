@@ -18,15 +18,21 @@ requirejs.config({
     backbone: 'deps/backbone/backbone',
     moment: 'deps/moment/moment',
     easing: 'deps/jquery-easing-original/jquery.easing',
-    jasmine: 'deps/jasmine-core/lib/jasmine-core',
+    jasmine: 'deps/jasmine-core/lib/jasmine-core/jasmine',
     jasmineBoot: 'deps/jasmine-core/lib/jasmine-core/boot',
     jasmineHtml: 'deps/jasmine-core/lib/jasmine-core/jasmine-html',
-    jasmineCss: 'text!deps/jasmine-core/lib/jasmine-core/jasmine.css',
+
   },
   shim: {
     easing: {
       deps: ['jquery'],
       exports: 'easing',
+    },
+    jasmineHtml: {
+      deps: ['jasmine']
+    },
+    jasmineBoot: {
+      deps: ['jasmineHtml'],
     },
   },
   waitSeconds: 0,
@@ -36,13 +42,13 @@ requirejs.config({
 // BOOT
 define(function Boot(require) {
   'use strict';
-  /* eslint global-require: 0*/
+  
   require('jquery');
   require('easing');
   require('underscore');
   require('backbone');
 
-  require('js/App/App');
+  require('js/App/App').launch();
 
   // Uncomment Below if you want to launch tests
   require('test/front/Boot.js').launch();
