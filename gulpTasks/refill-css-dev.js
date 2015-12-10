@@ -17,11 +17,11 @@ glob = promisify(glob);
 /**
  * refills the content of the dev css. The string is
  * multiple @import directives that imports all the compiled css
- * 
+ *
  * @param {Function} done The callback function
  * @returns {undefined}
  */
-function refillCssDev (done) {
+function refillCssDev(done) {
   var str;
   glob(scssGlob)
     .then(function (paths) {

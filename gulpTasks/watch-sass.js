@@ -22,7 +22,7 @@ var watchGlob = config.scssDir + '/**/*.scss';
  * @returns {undefined} Returns nothing when used as it is
  * @queue {Vinyl} Queues the modified Vinyl object
  */
-function sassPrepend (file) {
+function sassPrepend(file) {
   var str;
   if (file.event === 'unlink') return this.queue(file);
   str = file.contents.toString();
@@ -37,7 +37,7 @@ function sassPrepend (file) {
  * @returns {undefined} Returns nothing when used as it is
  * @queue {Vinyl} Queues the Vinyl object down the stream
  */
-function sassReport (file) {
+function sassReport(file) {
   var action;
   action = file.event;
 
@@ -57,7 +57,7 @@ function sassReport (file) {
  * @queue {Vinyl} Queues the Vinyl object down the stream
  * @throws {Error} Throws Error if the file could not be removed
  */
-function cssRemove (file) {
+function cssRemove(file) {
   var path;
   if (file.event !== 'unlink') return this.queue(file);
   path = file.path.split('.');
@@ -65,7 +65,7 @@ function cssRemove (file) {
   path.push('css');
   path = path.join('.');
 
-  fs.unlink(path, function (err) {
+  fs.unlink(path, function cb(err) {
     if (err) {
       reporter('Couldn\'t remove the file > ' + path, taskName, 'red');
       util.beep();
@@ -82,16 +82,16 @@ function cssRemove (file) {
  * @returns {undefined} Returns nothing when used as it is
  * @queue {Vinyl} Queues the Vinyl object down the stream
  */
-function updateDevCss (file) {
+function updateDevCss(file) {
   var devCssPath = config.build_dir + '/' + config.name + '.css';
   
   if (file.event === 'change') return this.queue(file);
 
-  refillCssDev(function (err) {
+  refillCssDev(function cb(err) {
     if (err) {
       reporter('Couldn\'t refill the dev css file', taskName, 'red');
       util.beep();
-      throw new Error(err);      
+      throw new Error(err);
     } else reporter('refilled > ' + devCssPath, taskName, 'green');
   });
 
@@ -99,30 +99,30 @@ function updateDevCss (file) {
 }
 
 /**
- * Reports error when occurs 
+ * Reports error when occurs
  * @param {string} err  The error message
  * @returns {undefined} Returns nothing
  */
-function onError (err) {
+function onError(err) {
   util.log(util.colors.red(err));
   util.beep();
 }
 
 
-gulp.task(taskName, function () {
+gulp.task(taskName, function watchSass() {
   gulp.src(watchGlob)
-  .pipe(plumber({ 
-    errorHandler : onError, 
+  .pipe(plumber({
+    errorHandler: onError,
   }))
   .pipe(watch(watchGlob))
   .pipe(sassPlotter())
   .pipe(through(sassPrepend))
   .pipe(sass({
-    errLogToConsole : true,
-    sourceComments : true,
+    errLogToConsole: true,
+    sourceComments: true,
   }))
   .pipe(gulp.dest('./css'), {
-    cwd : process.cwd(),
+    cwd: process.cwd(),
   })
   .pipe(through(updateDevCss))
   .pipe(through(cssRemove))

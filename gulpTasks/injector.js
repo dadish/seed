@@ -1,24 +1,28 @@
+'use strict';
+
 var _                           = require('lodash');
 
 /**
  * Produces a function that acceps a Vinyl file and replaces everyting in it's
  * content from startTag string and endTag string with the injectStr string.
- * 
+ *
  * @param {String} startTag The point from where to start injecting a string
  * @param {String} endTag The point where to stop injecting a string
  * @param {String} injectStr The string to be injected
  *
  * @returns {undefined}
- * 
+ *
  */
-function injector (startTag, endTag, injectStr) {
-  var str, startIndex, endIndex;
+function injector(startTag, endTag, injectStr) {
+  var str;
+  var startIndex;
+  var endIndex;
   return function (file) {
     str = file.contents.toString();
     startIndex = str.indexOf(startTag);
     endIndex = str.indexOf(endTag);
 
-    // if any of the tags did not match do nothing and pass the file 
+    // if any of the tags did not match do nothing and pass the file
     // down the stream
     if (startIndex === -1 || endIndex === -1) return this.queue(file);
 

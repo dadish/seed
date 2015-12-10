@@ -10,7 +10,7 @@ var through                     = require('through');
 var _                           = require('lodash');
 
 var taskName = 'inject-js-dev';
-var html = '\n<script data-main="/js/<%= jsEntryPoint %>" src="/deps/requirejs/require.js"></script>\n';
+var html = '\n<script data-main="/<%= jsEntryPoint %>" src="/deps/requirejs/require.js"></script>\n';
 var injectStr = _.template(html)(config);
 
 injector = through(injector(config.jsInjectTags[0], config.jsInjectTags[1], injectStr));
@@ -24,7 +24,7 @@ gulp.task(taskName, function (done) {
       this.queue(file);
     }))
 
-    // We need to provide gulp.dest the exact folder where the 
+    // We need to provide gulp.dest the exact folder where the
     // file was when gulp.src'ed.
     .pipe(gulp.dest(function (file) {
       // First remove path till cwd

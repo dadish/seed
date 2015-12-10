@@ -30,6 +30,7 @@
   "devDependencies": {
     "del": "^2.1.0",
     "es6-promisify": "^3.0.0",
+    "eslint-config-airbnb": "^2.0.0",
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.1.1",
     "gulp-nodemon": "^2.0.4",

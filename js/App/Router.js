@@ -2,24 +2,22 @@
 
 /**
  * The Router.
- * 
- * 
  */
 
-define(function (require, exports, module) {
-  
+define(function Router(require, exports, module) {
+  'use strict';
+
   var Backbone                    = require('backbone');
 
   module.exports = Backbone.Router.extend({
 
-    routes : {
-      '/*' : 'start'
+    routes: {
+      '/*': 'start',
     },
 
-    start : function () {
+    start: function start() {
       
-    }
+    },
     
   });
-
 });

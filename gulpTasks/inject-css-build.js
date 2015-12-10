@@ -18,13 +18,14 @@ var buildCssGlob = config.buildDir + '/' + config.name + '-*.css';
 glob = promisify(glob);
 
 gulp.task(taskName, ['create-css-build'], function (done) {
-  var destDir, injectStr;
+  var destDir;
+  var injectStr;
   
-  glob(buildCssGlob).then(function (paths) {  
+  glob(buildCssGlob).then(function (paths) {
     injectStr = _(paths).reduce(function (memo, path) {
       return memo + _.template(html)({
-        buildDirUrl : config.buildDirUrl,
-        name : path.split('/').pop(),
+        buildDirUrl: config.buildDirUrl,
+        name: path.split('/').pop(),
       });
     }, '');
     
@@ -37,7 +38,7 @@ gulp.task(taskName, ['create-css-build'], function (done) {
         this.queue(file);
       }))
 
-      // We need to provide gulp.dest the exact folder where the 
+      // We need to provide gulp.dest the exact folder where the
       // file was when gulp.src'ed.
       .pipe(gulp.dest(function (file) {
         // First remove path till cwd

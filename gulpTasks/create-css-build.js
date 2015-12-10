@@ -18,7 +18,9 @@ var scssDir = config.scssDir.split('/').pop();
 glob = promisify(glob);
 
 gulp.task(taskName, ['remove-css-build'], function (done) {
-  var str, vinyl, scssBuildFileStream;
+  var str;
+  var vinyl;
+  var scssBuildFileStream;
 
   glob(scssGlob)
     .then(function (paths) {
@@ -37,16 +39,16 @@ gulp.task(taskName, ['remove-css-build'], function (done) {
       str = config.sassPrepend + str;
 
       vinyl = new util.File({
-        path : config.scssDir + '/' + config.name + '.scss',
-        cwd : __dirname,
-        base : scssDir,        
-        contents : new Buffer(str),
+        path: config.scssDir + '/' + config.name + '.scss',
+        cwd: __dirname,
+        base: scssDir,
+        contents: new Buffer(str),
       });
 
       scssBuildFileStream = through();
 
       scssBuildFileStream
-        .pipe(sass({ errLogToConsole : true, outputStyle : 'compressed' }))
+        .pipe(sass({ errLogToConsole: true, outputStyle: 'compressed' }))
         .pipe(rev())
         .pipe(gulp.dest(config.buildDir.split('/').pop()))
         .pipe(through(function (file) {

@@ -24,7 +24,7 @@ gulp.task(taskName, ['create-css-dev'], function (done) {
       this.queue(file);
     }))
 
-    // We need to provide gulp.dest the exact folder where the 
+    // We need to provide gulp.dest the exact folder where the
     // file was when gulp.src'ed.
     .pipe(gulp.dest(function (file) {
       // First remove path till cwd
