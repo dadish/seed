@@ -3,6 +3,6 @@
 var gulp                        = require('gulp');
 var sequence                    = require('gulp-sequence');
 
-var taskname = 'dev';
+var taskname = 'build';
 
 gulp.task(taskname, sequence('inject-css-build', 'inject-js-build'));

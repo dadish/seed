@@ -14,7 +14,7 @@ var reporter                    = require('./reporter');
 var refillCssDev                = require('./refill-css-dev');
 
 var taskName = 'watch-sass';
-var watchGlob = config.scss_dir + '/**/*.scss';
+var watchGlob = config.scssDir + '/**/*.scss';
 
 /**
  * Prepend string to each sass file
