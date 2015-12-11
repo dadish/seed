@@ -7,10 +7,9 @@
 
 define(function BootTests(require, exports, module) {
   'use strict';
-
-  require('test/front/test');
-
   var cssStr = require('text!deps/jasmine-core/lib/jasmine-core/jasmine.css');
+  var $ = require('jquery');
+  require('test/front/test');
 
   module.exports = {
     launch: function launch() {

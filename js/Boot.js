@@ -29,7 +29,7 @@ requirejs.config({
       exports: 'easing',
     },
     jasmineHtml: {
-      deps: ['jasmine']
+      deps: ['jasmine'],
     },
     jasmineBoot: {
       deps: ['jasmineHtml'],
