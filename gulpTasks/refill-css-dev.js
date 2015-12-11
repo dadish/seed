@@ -1,17 +1,35 @@
 'use strict';
 
 var gulp                        = require('gulp');
+var util                        = require('gulp-util');
 var config                      = require('./config');
 var fs                          = require('fs');
+var getDirname                  = require('path').dirname;
 var glob                        = require('glob');
 var promisify                   = require('es6-promisify');
+var reporter                    = require('./reporter');
+var mkdirp                      = require('mkdirp');
 var _                           = require('lodash');
 
 var filepath = config.buildDir + '/' + config.name + '.css';
 var scssGlob = config.scssDir + '/*.scss';
 var taskName = 'refill-css-dev';
 
-var writeFile = promisify(fs.writeFile);
+/**
+ * mkdirp + writeFile version. Creates the directories in the path if
+ * they do not exist before creating the file.
+ * Behaves the same as fs.writeFile
+ */
+var writeFile = promisify(function mkdirpWriteFile(path, contents, cb) {
+  return mkdirp(getDirname(path), function (err) {
+    if (err) return cb(err);
+    fs.writeFile(path, contents, cb);
+  });
+});
+
+/**
+ * Promisify the glob function
+ */
 glob = promisify(glob);
 
 /**
@@ -42,6 +60,12 @@ function refillCssDev(done) {
 
       return writeFile(filepath, str);
     })
+
+    .catch(function (msg) {
+      reporter(msg, taskName, 'red');
+      util.beep();
+    })
+
     .then(done);
 }
 
