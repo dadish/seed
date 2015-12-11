@@ -26,7 +26,7 @@ function sassPrepend(file) {
   var str;
   if (file.event === 'unlink') return this.queue(file);
   str = file.contents.toString();
-  str = config.sass_prepend + str;
+  str = config.sassPrepend + str;
   file.contents = new Buffer(str);
   this.queue(file);
 }
