@@ -83,7 +83,7 @@ function cssRemove(file) {
  * @queue {Vinyl} Queues the Vinyl object down the stream
  */
 function updateDevCss(file) {
-  var devCssPath = config.build_dir + '/' + config.name + '.css';
+  var devCssPath = config.buildDir + '/' + config.name + '.css';
   
   if (file.event === 'change') return this.queue(file);
 
