@@ -8,10 +8,11 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to Seed</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          This is a <a href="https://github.com/facebookincubator/create-react-app" target="_blank">Create React App</a>
+          {' '}from Facebook sauced up with some redux, redux-observables, react-router and more.
         </p>
       </div>
     );
