@@ -43,6 +43,21 @@ export default function createRoutes(store) {
           renderRoute(component);
         })
       },
+    },  {
+      path: '/todo',
+      name: 'todo',
+      getComponent(nextState, cb) {
+        require.ensure([
+          'containers/AboutPage/reducer',
+          'containers/AboutPage'
+        ], (require) => {
+          const renderRoute = loadModule(cb);
+          const component = require('containers/Todo');
+          const reducer = require('containers/Todo/reducer').default;
+          injectReducer('todo', reducer);
+          renderRoute(component);
+        })
+      },
     }
   ];
 }

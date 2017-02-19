@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router';
+import style from './style';
 
 const Home = () => (
-  <div>
+  <div style={style.main}>
     <h1>Home Page</h1>
-    <Link to="/about">About</Link>
   </div>
 );
 

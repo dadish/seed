@@ -1,0 +1,33 @@
+.menu-l {
+  background-color: #039BE5;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.menu-i {
+  padding: 0;
+  height: 50px;
+}
+
+.menu-ia {
+  height: 50px;
+  padding: 1rem;
+  font-size: 1.25rem;
+  color: #FFF;
+  text-decoration: none;
+  display: block;
+}
+
+.menu-ia:hover{
+  background-color: #0277BD;
+}
+
+.menu-ia--active{
+  background-color: #0288D1;
+}
