@@ -1,10 +1,8 @@
-/* @flow */
-
-function reducer(state: Object = {}, action: Object) {
+function reducer(state, action) {
   return state;
 };
 
-function createReducers (): Function {
+function createReducers () {
   return reducer;
 }
 

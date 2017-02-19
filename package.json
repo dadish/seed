@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "flow-bin": "^0.39.0",
-    "flow-typed": "^2.0.0",
     "react-scripts": "0.9.0"
   },
   "dependencies": {
@@ -16,9 +14,7 @@
   "scripts": {
     "start": "env NODE_PATH=./src react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "flow": "flow",
-    "flow-typed": "flow-typed install"
+    "test": "react-scripts test --env=jsdom"
   },
   "eslintConfig": {
     "extends": "react-app"
