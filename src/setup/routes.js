@@ -44,17 +44,17 @@ export default function createRoutes(store) {
         })
       },
     },  {
-      path: '/todo',
-      name: 'todo',
+      path: '/toRead',
+      name: 'toRead',
       getComponent(nextState, cb) {
         require.ensure([
-          'containers/AboutPage/reducer',
-          'containers/AboutPage'
+          'containers/ToRead/reducer',
+          'containers/ToRead'
         ], (require) => {
           const renderRoute = loadModule(cb);
-          const component = require('containers/Todo');
-          const reducer = require('containers/Todo/reducer').default;
-          injectReducer('todo', reducer);
+          const component = require('containers/ToRead');
+          const reducer = require('containers/ToRead/reducer').default;
+          injectReducer('toRead', reducer);
           renderRoute(component);
         })
       },

@@ -1,0 +1,21 @@
+.trhead{
+  width: 100%;
+  text-align: center;
+}
+
+.trhead input{
+  width: 80%;
+  margin: auto;
+  line-height: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.25rem;
+  border-radius: 3px;
+  box-shadow: none;
+  background-color: none;
+  border: 1px solid #ddd;
+  outline:none;
+}
+
+.trhead input:focus{
+  border: 1px solid #039BE5;
+}
