@@ -1,0 +1,2 @@
+webpackJsonp([2],{83:function(e,t,u){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var l=u(4),r=n(l),o=function(){return r.default.createElement("div",null,r.default.createElement("h1",null,"Home Page"))};t.default=o},84:function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var u=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};arguments[1];return console.log("Home reducer!"),e};t.default=u}});
+//# sourceMappingURL=2.d31f8c78.chunk.js.map
