@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectSearchTxt } from '../selectors';
 import { changeSearchTxt } from '../actions';
 import './style.css';
 
@@ -11,8 +13,8 @@ export const HeaderComponent = ({ handleChange, searchTxt }) => {
   );
 };
 
-export const mapStateToProps = state => ({
-  searchTxt: state.getIn(['toRead', 'searchTxt']),
+export const mapStateToProps = state => createStructuredSelector({
+  searchTxt: selectSearchTxt(),
 });
 
 export const mapDispatchToProps = dispatch => ({

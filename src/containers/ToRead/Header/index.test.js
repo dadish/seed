@@ -22,6 +22,6 @@ test('mapDispatchToProps(dispatch).handleChange dispatches changeSearchTxt with 
 
 test('mapstateToProps(state).searchTxt is the searchTxt property of toRead state', () => {
   const target = 'as,dkjr';
-  const { searchTxt } = mapStateToProps(fromJS({ toRead: { searchTxt: target }}));
+  const { searchTxt } = mapStateToProps()(fromJS({ toRead: { searchTxt: target }}));
   expect(searchTxt).toBe(target);
 });
