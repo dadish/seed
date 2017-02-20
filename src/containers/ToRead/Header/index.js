@@ -1,26 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { changeSearchTxt } from '../actions';
 import './style.css';
 
-class Header extends Component {
+export const HeaderComponent = ({ handleChange, searchTxt }) => {
+  return (
+    <div className="trhead">
+      <input type="text" onChange={handleChange} value={searchTxt}/>
+    </div>
+  );
+};
 
-  constructor(props) {
-    super(props);
-    this.state = { txt: '' };
-    this.onChange = this.onChange.bind(this);
-  }
+export const mapStateToProps = state => ({
+  searchTxt: state.getIn(['toRead', 'searchTxt']),
+});
 
-  render () {
-    return (
-      <div className="trhead">
-        <input type="text" onChange={this.onChange} value={this.state.txt}/>
-      </div>
-    )
-  }
+export const mapDispatchToProps = dispatch => ({
+  handleChange: (ev) => dispatch(changeSearchTxt(ev.target.value)),
+});
 
-  onChange (ev) {
-    this.setState({ txt: ev.target.value });
-  }
-
-}
-
-export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
