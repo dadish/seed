@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
+import { applyRouterMiddleware, Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
 import { fromJS } from 'immutable';
@@ -14,16 +14,16 @@ import createRoutes from 'setup/routes';
 import App from 'containers/App';
 
 // Create redux store with history
-// this uses the singleton browserHistory provided by react-router
+// this uses the singleton hashHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
-// e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
+// e.g. `const hashHistory = useRouterHistory(createhashHistory)();`
 const initialState = fromJS({});
-const store = configureStore(initialState, browserHistory);
+const store = configureStore(initialState, hashHistory);
 
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState
 // must be provided for resolving how to retrieve the "route" in the state
-const history = syncHistoryWithStore(browserHistory, store, {
+const history = syncHistoryWithStore(hashHistory, store, {
   selectLocationState: makeSelectLocationState(),
 });
 
