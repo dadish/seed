@@ -5,6 +5,8 @@ import isObject from 'lodash/isObject';
 import isString from 'lodash/isString';
 import invariant from 'invariant';
 
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+
 import createReducer from 'setup/reducers';
 
 /**
@@ -17,6 +19,7 @@ export function checkStore(store) {
     getState: isFunction,
     replaceReducer: isFunction,
     asyncReducers: isObject,
+    epic$: (epic$) => epic$ instanceof ReplaySubject,
   };
   invariant(
     conformsTo(store, shape),
@@ -33,7 +36,7 @@ export function injectAsyncReducer(store, isValid) {
 
     invariant(
       isString(name) && !isEmpty(name) && isFunction(asyncReducer),
-      '(app/utils...) injectAsyncReducer: Expected `asyncReducer` to be a reducer function'
+      '(src/utils...) injectAsyncReducer: Expected `asyncReducer` to be a reducer function'
     );
 
     if (Reflect.has(store.asyncReducers, name)) return;
@@ -44,11 +47,30 @@ export function injectAsyncReducer(store, isValid) {
 }
 
 /**
+ * Inject an asynchronously loaded epic 
+ */
+export function injectAsyncEpic(store, isValid) {
+  return function injectReducer(name, asyncEpic) {
+    if (!isValid) checkStore(store);
+
+    invariant(
+      isString(name) && !isEmpty(name) && isFunction(asyncEpic),
+      '(src/utils...) injectAsyncEpic: Expected `asyncEpic` to be an epic function'
+    );
+
+    if (Reflect.has(store.asyncEpics, name)) return;
+    store.asyncEpics[name] = asyncEpic; // eslint-disable-line no-param-reassign
+    store.epic$.next(asyncEpic);
+  };
+}
+
+/**
  * Helper for creating injectors
  */
 export function getAsyncInjectors(store) {
   checkStore(store);
   return {
     injectReducer: injectAsyncReducer(store, true),
+    injectEpic: injectAsyncEpic(store, true),
   };
 }

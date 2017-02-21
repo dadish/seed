@@ -10,7 +10,7 @@ const loadModule = (cb) => (componentModule) => {
 
 export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
-  const { injectReducer } = getAsyncInjectors(store);
+  const { injectReducer, injectEpic } = getAsyncInjectors(store);
 
   return [
     {
@@ -18,13 +18,10 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         require.ensure([
-          'containers/HomePage/reducer',
           'containers/HomePage'
         ], (require) => {
           const renderRoute = loadModule(cb);
           const component = require('containers/HomePage');
-          const reducer = require('containers/HomePage/reducer').default;
-          injectReducer('home', reducer);
           renderRoute(component);
         })
       },
@@ -33,13 +30,10 @@ export default function createRoutes(store) {
       name: 'about',
       getComponent(nextState, cb) {
         require.ensure([
-          'containers/AboutPage/reducer',
           'containers/AboutPage'
         ], (require) => {
           const renderRoute = loadModule(cb);
           const component = require('containers/AboutPage');
-          const reducer = require('containers/AboutPage/reducer').default;
-          injectReducer('about', reducer);
           renderRoute(component);
         })
       },
@@ -49,12 +43,15 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         require.ensure([
           'containers/ToRead/reducer',
+          'containers/ToRead/epic',
           'containers/ToRead'
         ], (require) => {
           const renderRoute = loadModule(cb);
-          const component = require('containers/ToRead');
           const reducer = require('containers/ToRead/reducer').default;
+          const epic = require('containers/ToRead/epic').default;
+          const component = require('containers/ToRead');
           injectReducer('toRead', reducer);
+          injectEpic('toRead', epic);
           renderRoute(component);
         })
       },
