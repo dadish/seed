@@ -50,9 +50,7 @@ const toReadEpic = action$ =>
 
       // if AJAX request is successful then we emit
       // end of AJAX call
-      .map(() => {
-        return suggestionsLookupEnd();
-      })
+      .map(suggestionsLookupEnd)
 
       // If we encounter error we emit AJAX call fail action
       .catch(e => of$(suggestionsLookupFail(e))),
