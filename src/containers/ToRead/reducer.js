@@ -1,14 +1,22 @@
 import { fromJS } from 'immutable';
-import { CHANGE_SEARCH_TXT } from './constants';
+import {
+  CHANGE_SEARCH_TXT,
+  SUGGESTIONS_LOOKUP_END,
+} from './constants';
+import listReducer from './List/reducer';
 
 const initialState = fromJS({
   searchTxt: '',
+  list: [],
 });
 
-const reducer = (state = initialState, { type, payload, meta}) => {
+const reducer = (state = initialState, action) => {
+  const { type, payload} = action;
   switch (type) {
     case CHANGE_SEARCH_TXT:
       return state.set('searchTxt', payload);
+    case SUGGESTIONS_LOOKUP_END:
+      return state.set('list', listReducer(state.get('list'), action));
     default:
       return state;
   }
