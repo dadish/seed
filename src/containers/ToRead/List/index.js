@@ -13,4 +13,4 @@ export const mapStateToProps = createStructuredSelector({
   list: selectList()
 });
 
-export default connect()(ListComponent);
+export default connect(mapStateToProps)(ListComponent);
