@@ -1,10 +1,8 @@
 import { createSelector } from 'reselect';
 
-const selectRoot = () => (state) => state.get('toRead');
-
-export default selectRoot;
+export const selectToRead = () => (state) => state.get('toRead');
 
 export const selectSearchTxt = () => createSelector(
-  selectRoot(),
+  selectToRead(),
   toRead => toRead.get('searchTxt'),
 );

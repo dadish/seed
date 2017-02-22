@@ -1,4 +1,4 @@
-import selectRoot, { selectSearchTxt } from './selectors';
+import { selectToRead, selectSearchTxt } from './selectors';
 import { fromJS } from 'immutable';
 
 const searchTxt = 'adskfhgnmm';
@@ -12,7 +12,7 @@ const state = fromJS({
 })
 
 test("selectRoot() selects ['toRead'']", () => {
-  expect(selectRoot()(state).toJS()).toEqual(toRead);
+  expect(selectToRead()(state).toJS()).toEqual(toRead);
 });
 
 test("selectSearchTxt selects ['toRead', 'searchTxt']", () => {
