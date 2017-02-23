@@ -4,12 +4,12 @@
 export const CHANGE_SEARCH_TXT = "seed/LiveSearch/CHANGE_SEARCH_TXT";
 
 /**
- * The app starts an AJAX request to wikipedia
+ * The app starts an AJAX request to github
  */
 export const SUGGESTIONS_LOOKUP_START = "seed/LiveSearch/SUGGESTIONS_LOOKUP_START";
 
 /**
- * The AJAX request to wikipedia successfully ends
+ * The AJAX request to github successfully ends
  */
 export const SUGGESTIONS_LOOKUP_END = "seed/LiveSearch/SUGGESTIONS_LOOKUP_END";
 
@@ -19,12 +19,12 @@ export const SUGGESTIONS_LOOKUP_END = "seed/LiveSearch/SUGGESTIONS_LOOKUP_END";
 export const SUGGESTIONS_LOOKUP_CANCEL = "seed/LiveSearch/SUGGESTIONS_LOOKUP_CANCEL";
 
 /**
- * The AJAX request to wikipedia fails
+ * The AJAX request to github fails
  */
 export const SUGGESTIONS_LOOKUP_FAIL = "seed/LiveSearch/SUGGESTIONS_LOOKUP_FAIL";
 
 /**
- * The app lists the results of the wikipedia request
+ * The app lists the results of the github request
  */
 export const SHOW_SUGGESTIONS = "seed/LiveSearch/SHOW_SUGGESTIONS";
 
