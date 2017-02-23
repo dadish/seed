@@ -1,7 +1,4 @@
-.app-w{
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: flex-start;
-  align-items: center;
+.pg-w{
+  width: 80%;
+  margin: auto;
 }
