@@ -38,20 +38,20 @@ export default function createRoutes(store) {
         })
       },
     },  {
-      path: '/toRead',
-      name: 'toRead',
+      path: '/liveSearch',
+      name: 'liveSearch',
       getComponent(nextState, cb) {
         require.ensure([
-          'containers/ToRead/reducer',
-          'containers/ToRead/epic',
-          'containers/ToRead'
+          'containers/LiveSearch/reducer',
+          'containers/LiveSearch/epic',
+          'containers/LiveSearch'
         ], (require) => {
           const renderRoute = loadModule(cb);
-          const reducer = require('containers/ToRead/reducer').default;
-          const epic = require('containers/ToRead/epic').default;
-          const component = require('containers/ToRead');
-          injectReducer('toRead', reducer);
-          injectEpic('toRead', epic);
+          const reducer = require('containers/LiveSearch/reducer').default;
+          const epic = require('containers/LiveSearch/epic').default;
+          const component = require('containers/LiveSearch');
+          injectReducer('liveSearch', reducer);
+          injectEpic('liveSearch', epic);
           renderRoute(component);
         })
       },

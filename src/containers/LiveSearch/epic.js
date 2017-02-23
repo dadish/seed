@@ -23,7 +23,7 @@ export const SEARCH_URL = 'https://api.github.com';
  */
 export const SEARCH_PATH = '/search/repositories';
 
-const toReadEpic = action$ =>
+const liveSearchEpic = action$ =>
   action$
 
   // debounce 500ms
@@ -56,4 +56,4 @@ const toReadEpic = action$ =>
       .catch(e => of$(suggestionsLookupFail(e))),
   ));
 
-export default toReadEpic;
+export default liveSearchEpic;

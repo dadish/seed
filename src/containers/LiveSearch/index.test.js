@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ToRead from './index';
+import LiveSearch from './index';
 
 test('renders without crashing', () => {
-  shallow(<ToRead />);
+  shallow(<LiveSearch />);
 });
 

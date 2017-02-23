@@ -20,8 +20,8 @@ test('mapDispatchToProps(dispatch).handleChange dispatches changeSearchTxt with 
   expect(dispatch.mock.calls[0][0]).toEqual(changeSearchTxt(ev.target.value));
 });
 
-test('mapstateToProps(state).searchTxt is the searchTxt property of toRead state', () => {
+test('mapstateToProps(state).searchTxt is the searchTxt property of liveSearch state', () => {
   const target = 'as,dkjr';
-  const { searchTxt } = mapStateToProps()(fromJS({ toRead: { searchTxt: target }}));
+  const { searchTxt } = mapStateToProps()(fromJS({ liveSearch: { searchTxt: target }}));
   expect(searchTxt).toBe(target);
 });

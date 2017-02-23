@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import toReadEpic from './epic';
+import liveSearchEpic from './epic';
 import {
   addSuggestion,
   changeSearchTxt,
@@ -14,30 +14,30 @@ jest.useFakeTimers();
 
 beforeEach(() => {
   action$ = new BehaviorSubject(addSuggestion());
-  epic$ = toReadEpic(action$);
+  epic$ = liveSearchEpic(action$);
   consumer = jest.fn();
 });
 
-test('toReadEpic() does not emit actions right away', () => {
+test('liveSearchEpic() does not emit actions right away', () => {
   epic$.subscribe(consumer);
   action$.next(changeSearchTxt('first'));
   expect(consumer).not.toBeCalled();
 });
 
-test('toReadEpic() does not react to actions with the types other than CHANGE_SEARCH_TXT', () => {
+test('liveSearchEpic() does not react to actions with the types other than CHANGE_SEARCH_TXT', () => {
   epic$.subscribe(consumer);
   jest.runAllTimers();
   expect(consumer).not.toBeCalled();
 });
 
-test('toReadEpic() does not react to CHANGE_SEARCH_TXT actions if the payload is empty', () => {
+test('liveSearchEpic() does not react to CHANGE_SEARCH_TXT actions if the payload is empty', () => {
   epic$.subscribe(consumer);
   action$.next(changeSearchTxt(''));
   jest.runAllTimers();
   expect(consumer).not.toBeCalled();
 });
 
-test('toReadEpic() emits SUGGESTION_LOOKUP_START action with text from CHANGE_SEARCH_TXT action', () => {
+test('liveSearchEpic() emits SUGGESTION_LOOKUP_START action with text from CHANGE_SEARCH_TXT action', () => {
   epic$.subscribe(consumer);
   action$.next(changeSearchTxt('second'))
   jest.runAllTimers();

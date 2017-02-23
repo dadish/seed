@@ -4,9 +4,9 @@ import { selectList } from './selectors';
 const list = 'target';
 
 const state = fromJS({
-  toRead: { list }
+  liveSearch: { list }
 });
 
-test("selectList() selects ['toRead', 'list'] from the state", () => {
+test("selectList() selects ['liveSearch', 'list'] from the state", () => {
   expect(selectList()(state)).toBe(list);
 });
