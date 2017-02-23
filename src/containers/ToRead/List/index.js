@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectList } from './selectors';
 import Item from '../Item';
+import './style.css';
 
 export const ListComponent = ({ list }) => (
-  <ul>
+  <ul className="trd-l">
     {list.map(item => <Item key={item.id} item={item} />)}
   </ul>
 );
