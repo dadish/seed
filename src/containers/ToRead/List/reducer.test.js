@@ -3,16 +3,16 @@ import { suggestionsLookupEnd } from '../actions';
 
 const payload = {
   items: [
-    { id: 0, name: 'foo' },
-    { id: 1, name: 'foo' },
-    { id: 2, name: 'foo' },
-    { id: 3, name: 'foo' },
-    { id: 4, name: 'foo' },
-    { id: 5, name: 'foo' },
-    { id: 6, name: 'foo' },
-    { id: 7, name: 'foo' },
-    { id: 8, name: 'foo' },
-    { id: 9, name: 'foo' },
+    { id: 0, name: 'foo', owner: { login: 'some_people' }, description: 'my cool...', stargazers_count: 12, watchers_count: 13, language: 'go' },
+    { id: 1, name: 'foo', owner: { login: 'some_people' }, description: 'my cool...', stargazers_count: 12, watchers_count: 13, language: 'go' },
+    { id: 2, name: 'foo', owner: { login: 'some_people' }, description: 'my cool...', stargazers_count: 12, watchers_count: 13, language: 'go' },
+    { id: 3, name: 'foo', owner: { login: 'some_people' }, description: 'my cool...', stargazers_count: 12, watchers_count: 13, language: 'go' },
+    { id: 4, name: 'foo', owner: { login: 'some_people' }, description: 'my cool...', stargazers_count: 12, watchers_count: 13, language: 'go' },
+    { id: 5, name: 'foo', owner: { login: 'some_people' }, description: 'my cool...', stargazers_count: 12, watchers_count: 13, language: 'go' },
+    { id: 6, name: 'foo', owner: { login: 'some_people' }, description: 'my cool...', stargazers_count: 12, watchers_count: 13, language: 'go' },
+    { id: 7, name: 'foo', owner: { login: 'some_people' }, description: 'my cool...', stargazers_count: 12, watchers_count: 13, language: 'go' },
+    { id: 8, name: 'foo', owner: { login: 'some_people' }, description: 'my cool...', stargazers_count: 12, watchers_count: 13, language: 'go' },
+    { id: 9, name: 'foo', owner: { login: 'some_people' }, description: 'my cool...', stargazers_count: 12, watchers_count: 13, language: 'go' },
   ]
 }
 
