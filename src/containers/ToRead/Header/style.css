@@ -6,13 +6,13 @@
 .trd-head input{
   width: 100%;
   margin: auto;
-  line-height: 2.25rem;
-  height: 2.25rem;
+  padding: 0 1rem;
+  line-height: 2.5rem;
+  height: 2.5rem;
   font-size: 1.25rem;
-  border-radius: 3px;
   box-shadow: none;
   background-color: none;
-  border: 1px solid #ddd;
+  border: none;
   outline:none;
 }
 

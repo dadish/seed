@@ -7,7 +7,7 @@ import './style.css';
 
 export const ListComponent = ({ list }) => (
   <ul className="trd-l">
-    {list.map(item => <Item key={item.id} item={item} />)}
+    {list.map(item => <Item key={item.get('id')} item={item} />)}
   </ul>
 );
 

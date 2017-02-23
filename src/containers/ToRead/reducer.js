@@ -3,11 +3,11 @@ import {
   CHANGE_SEARCH_TXT,
   SUGGESTIONS_LOOKUP_END,
 } from './constants';
-import listReducer from './List/reducer';
+import listReducer, { initialSate } from './List/reducer';
 
 const initialState = fromJS({
   searchTxt: '',
-  list: [],
+  list: initialSate,
 });
 
 const reducer = (state = initialState, action) => {
