@@ -6,3 +6,8 @@ export const selectSearchTxt = () => createSelector(
   selectLiveSearch(),
   liveSearch => liveSearch.get('searchTxt'),
 );
+
+export const selectFetching = () => createSelector(
+  selectLiveSearch(),
+  liveSearch => liveSearch.get('fetching'),
+);
