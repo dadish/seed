@@ -8,11 +8,11 @@ import { fromJS } from 'immutable';
 import configureStore from 'setup/store';
 import { makeSelectLocationState } from 'setup/selectors';
 import createRoutes from 'setup/routes';
-import style from './style';
 import 'setup/index.css';
+import './style.css';
 
 export const App = ({ children }) => (
-  <div style={style.main}>
+  <div className="app-w">
     <Menu />
     {children}
   </div>
