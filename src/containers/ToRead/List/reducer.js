@@ -1,11 +1,11 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 import {
   SUGGESTIONS_LOOKUP_END,
 } from '../constants';
 
 const initialSate = new List();
 
-const getItemProps = (item) => ({
+const getItemProps = (item) => new Map({
   id: item.id,
   name: item.name,
   owner: item.owner.login,
