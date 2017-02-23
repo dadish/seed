@@ -4,7 +4,7 @@ import List from './List';
 import './style.css';
 
 const Todo = () => (
-  <div className="trwrap">
+  <div className="trd-wrap">
     <h1>ToRead!</h1>
     <Header />
     <List />

@@ -1,9 +1,9 @@
-.trhead{
+.trd-head{
   width: 100%;
   text-align: center;
 }
 
-.trhead input{
+.trd-head input{
   width: 80%;
   margin: auto;
   line-height: 2.25rem;
@@ -16,6 +16,6 @@
   outline:none;
 }
 
-.trhead input:focus{
+.trd-head input:focus{
   border: 1px solid #039BE5;
 }

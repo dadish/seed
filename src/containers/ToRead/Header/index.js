@@ -7,7 +7,7 @@ import './style.css';
 
 export const HeaderComponent = ({ handleChange, searchTxt }) => {
   return (
-    <div className="trhead">
+    <div className="trd-head">
       <input type="text" onChange={handleChange} value={searchTxt} autoFocus />
     </div>
   );
