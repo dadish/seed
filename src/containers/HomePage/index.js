@@ -5,7 +5,7 @@ const Home = () => (
     <h1>Seed</h1>
     <p>
       This is <a href="https://github.com/dadish" target="_blank">my</a> personal boilerplate repository for 
-      creating <a href="https://facebook.github.io/react/">React</a> applications.
+      bootstrapping <a href="https://facebook.github.io/react/">React</a> applications.
     </p>
   </div>
 );
