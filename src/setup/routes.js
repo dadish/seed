@@ -55,6 +55,18 @@ export default function createRoutes(store) {
           renderRoute(component);
         })
       },
+    },  {
+      path: '*',
+      name: 'notFound',
+      getComponent(nextState, cb) {
+        require.ensure([
+          'containers/NotFoundPage'
+        ], (require) => {
+          const renderRoute = loadModule(cb);
+          const component = require('containers/NotFoundPage');
+          renderRoute(component);
+        })
+      },
     }
   ];
 }
