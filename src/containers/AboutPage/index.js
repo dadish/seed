@@ -33,6 +33,10 @@ const About = () => (
       <li>warning</li>
       <li>react-scripts</li>
     </ul>
+
+    <p>
+    Most of the architechtural ideas are stolen from <a href="https://github.com/mxstbr" target="_blank">Max stoiber</a>'s <a href="https://github.com/react-boilerplate/react-boilerplate" target="_blank">react-boilerplate</a>
+    </p>
   </div>
 );
 
