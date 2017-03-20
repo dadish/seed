@@ -5,7 +5,8 @@ import List from './List';
 
 const Todo = () => (
   <Container text>
-    <H as="h2" textAlign="center">Go Search!</H>
+    <br />
+    <H as="h2" textAlign="center">Search Github for Go programs!</H>
     <Header />
     <List />
   </Container>

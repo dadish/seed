@@ -45,7 +45,7 @@ const liveSearchEpic = (action$, _, { ajax }) =>
 
     // then we make an AJAX request
     ajax
-      .getJSON(`${SEARCH_URL}${SEARCH_PATH}?q=${action.payload} in:title,description,readme`)
+      .getJSON(`${SEARCH_URL}${SEARCH_PATH}?q=${action.payload} in:title,description,readme language:go`)
 
       // if AJAX request is successful then we emit
       // end of AJAX call
