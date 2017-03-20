@@ -10,7 +10,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import createReducer from 'setup/reducers';
 
-let store = null;
+let store = false;
 
 /**
  * Validate the shape of redux store
@@ -63,6 +63,7 @@ export function injectEpic(name, asyncEpic) {
  * Helper for creating injectors
  */
 export function setStore(str) {
-  checkStore(str);
-  store = str;
+  invariant(!store, '`utils/asyncInjectors`: You can set the store only once in a lifetime!')
+  checkStore(str)
+  store = str
 }
