@@ -3,18 +3,19 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectList } from './selectors';
 import { selectFetching } from '../selectors';
+import { Grid, Loader } from 'semantic-ui-react';
 import Item from '../Item';
 import './style.css';
 
 export const ListComponent = ({ list, fetching }) => {
   let output;
   if (fetching) {
-    output = <p>Fetching... 🌏 </p>;
+    output = <Loader active>Loading...</Loader>;
   } else {
     output = (
-      <ul className="trd-l">
+      <Grid padded>
         {list.map(item => <Item key={item.get('id')} item={item} />)}
-      </ul>
+      </Grid>
     );
   }
   return output;

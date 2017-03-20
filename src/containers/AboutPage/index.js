@@ -1,7 +1,8 @@
 import React from 'react';
+import { Container } from 'semantic-ui-react';
 
 const About = () => (
-  <div className="pg-w">
+  <Container text>
     <h1>About Seed</h1>
     <p>
       This boilerplate is an extension of the <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a>.
@@ -37,7 +38,7 @@ const About = () => (
     <p>
     Most of the architechtural ideas are stolen from <a href="https://github.com/mxstbr" target="_blank">Max stoiber</a>'s <a href="https://github.com/react-boilerplate/react-boilerplate" target="_blank">react-boilerplate</a>
     </p>
-  </div>
+  </Container>
 );
 
 export default About;

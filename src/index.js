@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { fromJS } from 'immutable';
 import configureStore from 'setup/store';
 import { setStore } from 'utils/asyncInjectors';
-import 'setup/index.css';
+import 'semantic-ui-css/semantic.css';
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router

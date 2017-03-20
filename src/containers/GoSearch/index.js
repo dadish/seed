@@ -1,14 +1,14 @@
 import React from 'react';
+import { Container, Header as H } from 'semantic-ui-react';
 import Header from './Header';
 import List from './List';
-import './style.css';
 
 const Todo = () => (
-  <div className="trd-wrap">
-    <h2>Go Search!</h2>
+  <Container text>
+    <H as="h2" textAlign="center">Go Search!</H>
     <Header />
     <List />
-  </div>
+  </Container>
 );
 
 export default Todo;

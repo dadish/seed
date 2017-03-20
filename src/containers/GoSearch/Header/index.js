@@ -1,26 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Input } from 'semantic-ui-react';
 import { createStructuredSelector } from 'reselect';
-import { selectSearchTxt } from '../selectors';
+import { selectSearchTxt, selectFetching } from '../selectors';
 import { changeSearchTxt } from '../actions';
-import './style.css';
 
-export const HeaderComponent = ({ handleChange, searchTxt }) => {
+export const HeaderComponent = ({ handleChange, searchTxt, fetching }) => {
   return (
-    <div className="trd-head">
-      <input
-        type="text"
-        onChange={handleChange}
-        value={searchTxt}
-        placeholder="search..."
-        autoFocus
-      />
-    </div>
+    <Input
+      icon="search"
+      onChange={handleChange}
+      value={searchTxt}
+      placeholder="search..."
+      loading={fetching}
+      autoFocus
+      fluid
+    />
   );
 };
 
 export const mapStateToProps = state => createStructuredSelector({
   searchTxt: selectSearchTxt(),
+  fetching: selectFetching(),
 });
 
 export const mapDispatchToProps = dispatch => ({

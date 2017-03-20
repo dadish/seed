@@ -4,7 +4,6 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import './style.css';
 import Menu from 'components/Menu';
 import Home from 'containers/HomePage/async';
 import About from 'containers/AboutPage/async';
