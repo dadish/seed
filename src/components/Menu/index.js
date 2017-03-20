@@ -13,7 +13,7 @@ const Menu = () => (
         <NavLink className="menu-ia" activeClassName="menu-ia--active" to="/about">About</NavLink>
       </li>
       <li className="menu-i">
-        <NavLink className="menu-ia" activeClassName="menu-ia--active" to="/liveSearch">Live Search</NavLink>
+        <NavLink className="menu-ia" activeClassName="menu-ia--active" to="/search">Go Search</NavLink>
       </li>
   </ul>
   </div>

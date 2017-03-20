@@ -5,7 +5,7 @@ import './style.css';
 
 const Todo = () => (
   <div className="trd-wrap">
-    <h2>Search Github!</h2>
+    <h2>Go Search!</h2>
     <Header />
     <List />
   </div>
