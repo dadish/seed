@@ -10,7 +10,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mapTo';
-import 'rxjs/add/operator/do';
+import { ajax } from 'rxjs/observable/dom/ajax';
 import createReducer from './reducers';
 
 export default function configureStore(initialState = {}, history) {
@@ -24,16 +24,18 @@ export default function configureStore(initialState = {}, history) {
    */
   const epic$ = new ReplaySubject();
 
-  const rootEpic = (action$, store) => 
+  const rootEpic = (action$, store, deps) => 
     epic$
-      .mergeMap(epic => epic(action$, store));
+      .mergeMap(epic => epic(action$, store, deps));
 
   // Create the store with two middlewares
   // 1. routerMiddleware: Syncs the location/URL path to the state
   // 2. epicMiddleware: Provides redux-observable side-effects handling with RXJS
   const middlewares = [
     routerMiddleware(history),
-    createEpicMiddleware(rootEpic),
+    createEpicMiddleware(rootEpic, {
+      dependencies: { ajax }
+    }),
   ];
 
   const enhancers = [

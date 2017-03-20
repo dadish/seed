@@ -3,7 +3,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
-import { ajax } from 'rxjs/observable/dom/ajax';
 import { of as of$ } from 'rxjs/observable/of';
 import { concat as concat$ } from 'rxjs/observable/concat';
 import { CHANGE_SEARCH_TXT } from './constants';
@@ -23,7 +22,7 @@ export const SEARCH_URL = 'https://api.github.com';
  */
 export const SEARCH_PATH = '/search/repositories';
 
-const liveSearchEpic = action$ =>
+const liveSearchEpic = (action$, _, { ajax }) =>
   action$
 
   // debounce 500ms
