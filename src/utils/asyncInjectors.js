@@ -9,6 +9,8 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import createReducer from 'setup/reducers';
 
+let store = null;
+
 /**
  * Validate the shape of redux store
  */
@@ -30,47 +32,36 @@ export function checkStore(store) {
 /**
  * Inject an asynchronously loaded reducer
  */
-export function injectAsyncReducer(store, isValid) {
-  return function injectReducer(name, asyncReducer) {
-    if (!isValid) checkStore(store);
+export function injectReducer(name, asyncReducer) {
+  invariant(
+    isString(name) && !isEmpty(name) && isFunction(asyncReducer),
+    '(src/utils...) injectAsyncReducer: Expected `asyncReducer` to be a reducer function'
+  );
 
-    invariant(
-      isString(name) && !isEmpty(name) && isFunction(asyncReducer),
-      '(src/utils...) injectAsyncReducer: Expected `asyncReducer` to be a reducer function'
-    );
+  if (Reflect.has(store.asyncReducers, name)) return;
 
-    if (Reflect.has(store.asyncReducers, name)) return;
-
-    store.asyncReducers[name] = asyncReducer; // eslint-disable-line no-param-reassign
-    store.replaceReducer(createReducer(store.asyncReducers));
-  };
+  store.asyncReducers[name] = asyncReducer; // eslint-disable-line no-param-reassign
+  store.replaceReducer(createReducer(store.asyncReducers));
 }
 
 /**
  * Inject an asynchronously loaded epic 
  */
-export function injectAsyncEpic(store, isValid) {
-  return function injectReducer(name, asyncEpic) {
-    if (!isValid) checkStore(store);
+export function injectEpic(name, asyncEpic) {
+  invariant(
+    isString(name) && !isEmpty(name) && isFunction(asyncEpic),
+    '(src/utils...) injectAsyncEpic: Expected `asyncEpic` to be an epic function'
+  );
 
-    invariant(
-      isString(name) && !isEmpty(name) && isFunction(asyncEpic),
-      '(src/utils...) injectAsyncEpic: Expected `asyncEpic` to be an epic function'
-    );
-
-    if (Reflect.has(store.asyncEpics, name)) return;
-    store.asyncEpics[name] = asyncEpic; // eslint-disable-line no-param-reassign
-    store.epic$.next(asyncEpic);
-  };
+  if (Reflect.has(store.asyncEpics, name)) return;
+  store.asyncEpics[name] = asyncEpic; // eslint-disable-line no-param-reassign
+  store.epic$.next(asyncEpic);
 }
 
 /**
  * Helper for creating injectors
  */
-export function getAsyncInjectors(store) {
-  checkStore(store);
-  return {
-    injectReducer: injectAsyncReducer(store, true),
-    injectEpic: injectAsyncEpic(store, true),
-  };
+export function setStore(str) {
+  checkStore(str);
+  store = str;
 }

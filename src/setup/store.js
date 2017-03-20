@@ -4,7 +4,6 @@
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
-import { routerMiddleware } from 'react-router-redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import 'rxjs/add/operator/mergeMap';
@@ -32,7 +31,6 @@ export default function configureStore(initialState = {}, history) {
   // 1. routerMiddleware: Syncs the location/URL path to the state
   // 2. epicMiddleware: Provides redux-observable side-effects handling with RXJS
   const middlewares = [
-    routerMiddleware(history),
     createEpicMiddleware(rootEpic, {
       dependencies: { ajax }
     }),
