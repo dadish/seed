@@ -11,6 +11,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mapTo';
 import { ajax } from 'rxjs/observable/dom/ajax';
 import createReducer from './reducers';
+import { routerMiddleware } from 'react-router-redux'
 
 export default function configureStore(initialState = {}, history) {
   
@@ -31,6 +32,7 @@ export default function configureStore(initialState = {}, history) {
   // 1. routerMiddleware: Syncs the location/URL path to the state
   // 2. epicMiddleware: Provides redux-observable side-effects handling with RXJS
   const middlewares = [
+    routerMiddleware(history),
     createEpicMiddleware(rootEpic, {
       dependencies: { ajax }
     }),
