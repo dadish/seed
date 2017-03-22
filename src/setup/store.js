@@ -3,17 +3,16 @@
  */
 
 import { createStore, applyMiddleware, compose } from 'redux';
-import { fromJS } from 'immutable';
 import { createEpicMiddleware } from 'redux-observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ajax } from 'rxjs/observable/dom/ajax';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mapTo';
-import { ajax } from 'rxjs/observable/dom/ajax';
-import createReducer from './reducers';
+import createReducers from './reducers';
 import { routerMiddleware } from 'react-router-redux'
 
-export default function configureStore(initialState = {}, history) {
+export default function configureStore(history) {
   
   /**
    * NOTE
@@ -23,7 +22,6 @@ export default function configureStore(initialState = {}, history) {
    * should be good to go.
    */
   const epic$ = new ReplaySubject();
-
   const rootEpic = (action$, store, deps) => 
     epic$
       .mergeMap(epic => epic(action$, store, deps));
@@ -38,10 +36,6 @@ export default function configureStore(initialState = {}, history) {
     }),
   ];
 
-  const enhancers = [
-    applyMiddleware(...middlewares),
-  ];
-
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers =
@@ -52,10 +46,9 @@ export default function configureStore(initialState = {}, history) {
   /* eslint-enable */
 
   const store = createStore(
-    createReducer(),
-    fromJS(initialState),
-    composeEnhancers(...enhancers)
-  );
+    createReducers(),
+    composeEnhancers(applyMiddleware(...middlewares))
+  )
 
   /**
    * Async code loading

@@ -1,27 +1,18 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 import Menu from 'components/Menu';
-import Home from 'containers/HomePage/async';
-import About from 'containers/AboutPage/async';
-import Search from 'containers/GoSearch/async';
-import NotFound from 'containers/NotFoundPage/async';
 
-export const App = ({ children }) => (
-  <Router>
-    <div className="app-w">
-      <Menu />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/search" component={Search} />
-        <Route component={NotFound} />
-      </Switch>
-    </div>
-  </Router>
-);
+class App extends Component {
+  render () {
+    return (
+      <div>
+        <Menu />
+        <Route exact path="/" component={() => <h1>Home</h1>}/>
+        <Route path="/about" component={() => <h1>About</h1>}/>
+        <Route path="/topics" component={() => <h1>Topics</h1>}/>
+      </div>
+    )
+  }
+}
 
 export default App;
