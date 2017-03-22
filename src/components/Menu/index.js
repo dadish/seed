@@ -10,8 +10,8 @@ const Menu = ({ goTo }) =>
     <li onClick={goTo("/about")}>
       About
     </li>
-    <li onClick={goTo("/topics")}>
-      Topics
+    <li onClick={goTo("/search")}>
+      Search
     </li>
   </ul>
 
