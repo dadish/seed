@@ -1,22 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
+import { Menu } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
 
-const Menu = ({ goTo }) =>
-  <ul>
-    <li onClick={goTo("/")}>
+const { Item } = Menu
+
+const Component = ({ goTo, location: { pathname } }) =>
+  <Menu
+    size="massive"
+    pointing
+    secondary
+    color="blue"
+  >
+    <Item onClick={goTo('/')} active={pathname === '/'}>
       Home
-    </li>
-    <li onClick={goTo("/about")}>
+    </Item>
+    <Item onClick={goTo('/about')} active={pathname === '/about'}>
       About
-    </li>
-    <li onClick={goTo("/search")}>
+    </Item>
+    <Item onClick={goTo('/search')} active={pathname === '/search'}>
       Search
-    </li>
-  </ul>
+    </Item>
+  </Menu>
 
 const mapDispatchToProps = dispatch => ({
   goTo: url => () => dispatch(push(url))
 })
 
-export default connect(null, mapDispatchToProps)(Menu)
+export default withRouter(connect(null, mapDispatchToProps)(Component))
